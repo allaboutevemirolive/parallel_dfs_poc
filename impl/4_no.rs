@@ -1,6 +1,6 @@
 extern crate rand;
 use rand::Rng;
-use std::time::{Instant, Duration};
+use std::time::Instant;
 
 fn sum_of_squares(input: &[i32]) -> i64 {
     input.iter()
@@ -10,12 +10,10 @@ fn sum_of_squares(input: &[i32]) -> i64 {
 
 fn main() {
     let mut rng = rand::thread_rng();
-    let numbers: Vec<i32> = (0..1_000_000).map(|_| rng.gen_range(1..101)).collect();
-
     let start_time = Instant::now();
 
+    let numbers: Vec<i32> = (0..100_000_000).map(|_| rng.gen_range(1..101)).collect();
     let result = sum_of_squares(&numbers);
-
     let elapsed_time = start_time.elapsed();
 
     // Convert elapsed time to seconds
